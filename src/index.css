@@ -1,14 +1,32 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
+@plugin "daisyui" {
+  themes: false;
+}
+:root {
+  --color-green-dark: #143335;
+  --color-green-light: #bbd8c6;
+  --color-green-middle: #92b19f;
+  --color-primary: #ff9784;
+  --color-primary-light: #fad4c9;
+}
+/* * {
+  margin: auto;
+} */
 body {
   font-family: "Quicksand", sans-serif;
+  background-color: var(--color-green-dark);
 }
-h1,
+
 h2,
 h3 {
   font-family: "Fuzzy Bubbles", sans-serif;
   color: #ff9784;
+}
+
+h1 {
+  color: #fad4c9;
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-size: 2rem;
 }
 
 @plugin "daisyui/theme" {
@@ -17,13 +35,15 @@ h3 {
   prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
   color-scheme: light; /* color of browser-provided UI */
 
-  --color-base-100: #143335; /*bg-color */
-  --color-bg-light: #bbd8c6;
+  --color-green-dark: #143335; /*bg-color dunkle grün bg-base-100 */
+  --color-green-light: #bbd8c6; /* hell grün */
+  --color-green-middle: #92b19f; /* mittel grün */
+  --color-primary: #ff9784; /* orange */
+  --color-primary-light: #fad4c9; /* hell orange */
+
   /* --color-base-300: oklch(92% 0.04 240);
   --color-base-content: oklch(20% 0.05 240); */
-  --color-primary: #ff9784;
-  --color-primary-content: #ffffff;
-  --color-secondary: #92b19f;
+
   /* --color-secondary-content: oklch(98% 0.01 200);
   --color-accent: oklch(65% 0.25 160);
   --color-accent-content: oklch(98% 0.01 160);
@@ -43,7 +63,10 @@ h3 {
   --radius-field: 1rem;
   --radius-box: 1rem;
 }
-
+.btn {
+  border-radius: 25px;
+  border: none;
+}
 .fuzzy-bubbles-regular {
   font-family: "Fuzzy Bubbles", sans-serif;
   font-weight: 400;

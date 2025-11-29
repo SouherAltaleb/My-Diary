@@ -1,25 +1,46 @@
-import { useState } from "react";
-import Header from "../layout/Header.jsx";
-// import EntryList from "../components/EntryList";
-// import AddEntryModal from "../components/AddEntryModal";
-// import ViewEntryModal from "../components/ViewEntryModal";
+import { useState, useEffect } from "react";
 
-// import useLocalStorage from "../hooks/useLocalStorage";
+function Home() {
+  const [entries, setEntries] = useState([]);
 
-export default function Home() {
-  //   const [entries, setEntries] = useLocalStorage("entries", []);
-  //   const [showAddModal, setShowAddModal] = useState(false);
-  //   const [showViewModal, setShowViewModal] = useState(false);
-  //   const [selectedEntry, setSelectedEntry] = useState(null);
+  // Einträge beim Start laden
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("entries")) || [];
+    setEntries(stored);
+  }, []);
+
+  // Speichern in localStorage
+  const addEntry = () => {
+    const newEntry = {
+      title: "Neuer Eintrag",
+      date: new Date().toISOString().slice(0, 10),
+      content: "Dies ist ein Beispieltext.",
+    };
+
+    const updated = [newEntry, ...entries];
+    setEntries(updated);
+    localStorage.setItem("entries", JSON.stringify(updated));
+  };
 
   return (
-    <div className="min-h-screen ">
-      <h1> Das ist Headline</h1>
-      <p> oldjwodjohfcw kihqwifdhiofq </p>
-      <button className="btn " type="submit">
-        {" "}
-        send{" "}
+    <div className="mt-40">
+      <h1 className="text-3xl font-bold mb-6">My Diary</h1>
+
+      {/* <button className="btn btn-primary mb-4" onClick={addEntry}>
+        + Add Entry (Test)
       </button>
+
+      <ul className="space-y-3">
+        {entries.map((entry, i) => (
+          <li key={i} className="p-4 bg-base-200 rounded-lg">
+            <strong>{entry.title}</strong>
+            <div className="text-sm opacity-70">{entry.date}</div>
+            <p>{entry.content}</p>
+          </li>
+        ))}
+      </ul> */}
     </div>
   );
 }
+
+export default Home;
