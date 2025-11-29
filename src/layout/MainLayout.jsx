@@ -1,9 +1,10 @@
 import React from "react";
+// import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 
-export default function MainLayout() {
+const MainLayout = () => {
   return (
     // Gesamtes Layout über die ganze Bildschirmhöhe
     <div className="min-h-screen flex flex-col">
@@ -17,4 +18,5 @@ export default function MainLayout() {
       <Footer />
     </div>
   );
-}
+};
+export default MainLayout;
