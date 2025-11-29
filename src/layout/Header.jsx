@@ -1,7 +1,7 @@
 import logo from "../assets/logo.svg";
 import AddEntryButton from "../components/AddEntryButton";
 
-export default function Header({ onAdd }) {
+export default function Header({ onAddClick }) {
   return (
     <header className="  fixed top-0 left-0 w-full z-50 bg-(-green-dark) backdrop-blur-md px-10 py-4 flex justify-between items-center shadow-lg">
       {/* Logo + Title */}
@@ -10,8 +10,8 @@ export default function Header({ onAdd }) {
 
         <h1 className="drop-shadow font-bold">MyDiary App</h1>
       </div>
-
-      <AddEntryButton onClick={onAdd} />
+      {/* onAdd kommt von der Seite home */}
+      <AddEntryButton onClick={onAddClick} />
     </header>
   );
 }

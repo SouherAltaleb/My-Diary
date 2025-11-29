@@ -1,40 +1,67 @@
 export default function EntryCard({ entry, onClick }) {
+  const moodIcons = {
+    happy: "😄",
+    good: "😊",
+    neutral: "😐",
+    sad: "😢",
+    excited: "🔥",
+  };
+
   return (
+    // card
     <div
-      className="bg-base-100 rounded-2xl shadow-xl overflow-hidden cursor-pointer 
-      transform transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
       onClick={onClick}
+      className="
+        bg-(--color-green-light)
+        rounded-3xl overflow-hidden cursor-pointer
+        shadow-lg hover:shadow-2xl
+        transition-all duration-300
+        hover:-translate-y-1 hover:scale-[1.03]
+        border-2 border-(--color-green-middle)
+      "
     >
-      {/* Image */}
-      <div className="h-48 w-full overflow-hidden">
+      {/* IMAGE */}
+      <div className="h-56 w-full overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1600195077909-46e573870d99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          //   src={entry.image}
+          src={entry.image}
           alt={entry.title}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+          className="
+            w-full h-full object-cover 
+            transition-transform duration-300 
+            hover:scale-110
+          "
         />
       </div>
 
-      {/* Text area */}
-      <div className="p-4 bg-primary-light bg-amber-100">
-        <h2 className="text-lg font-bold ">{entry.title}</h2>
-        <p className="text-sm text-gray-600 mt-1">{entry.date}</p>
+      {/* TEXT AREA */}
+      <div className="p-5 relative">
+        {/* Mood Icon */}
+        <div
+          className="
+            absolute -top-6 right-4 
+            bg-white shadow-md w-12 h-12 
+            rounded-full flex items-center justify-center 
+            text-3xl
+          "
+        >
+          {moodIcons[entry.mood] || "🙂"}
+        </div>
+
+        {/* Title */}
+        <h2 className="text-xl font-bold text-(--color-green-dark) mt-2">
+          {entry.title}
+        </h2>
+
+        {/* Date */}
+        <p className="text-sm opacity-70 text-(--color-green-dark) mt-1">
+          {entry.date}
+        </p>
+
+        {/* Content Preview (3 lines max) */}
+        <p className="mt-3 text-(--color-green-dark) opacity-90 line-clamp-3">
+          {entry.content}
+        </p>
       </div>
     </div>
   );
 }
-
-// export default function EntryCard({ entry }) {
-//   return (
-//     <div className="rounded-xl overflow-hidden bg-base-content shadow-md">
-//       {/* Bild */}
-//       <div className="h-32 bg-amber-50 "></div>
-
-//       {/* Text */}
-//       <div className="p-3 ">
-//         <h2 className="font-semibold text-color-green-dark">{entry.title}</h2>
-//         <p className="text-xs text-emerald-950">{entry.date}</p>
-//       </div>
-//     </div>
-//   );
-// }
