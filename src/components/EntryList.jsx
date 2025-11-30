@@ -1,26 +1,26 @@
-// import EntryCard from "./EntryCard";
-
-// export default function EntryList({ entries }) {
-//   return (
-//     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-//       {entries.map((entry, i) => (
-//         <EntryCard key={i} entry={entry} />
-//       ))}
-//     </div>
-//   );
-// }
 // src/components/EntryList.jsx
 import EntryCard from "./EntryCard";
 
-export default function EntryList({ entries, openEntry }) {
-  if (!entries.length) {
+export default function EntryList({ entries, setEntries, openEntry }) {
+  if (!entries || entries.length === 0) {
     return <p className="text-gray-300">Keine Einträge vorhanden...</p>;
   }
 
+  const handleDelete = (id) => {
+    const updated = entries.filter((e) => e.id !== id);
+    setEntries(updated);
+    localStorage.setItem("entries", JSON.stringify(updated));
+  };
+
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {entries.map((entry, i) => (
-        <EntryCard key={i} entry={entry} onClick={() => openEntry(entry)} />
+      {entries.map((entry) => (
+        <EntryCard
+          key={entry.id}
+          entry={entry}
+          onClick={() => openEntry && openEntry(entry)}
+          onDelete={handleDelete}
+        />
       ))}
     </div>
   );

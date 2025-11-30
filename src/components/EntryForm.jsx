@@ -20,6 +20,7 @@ export default function EntryForm({ onSubmit }) {
     if (!title || !date || !image || !content) return;
 
     onSubmit({
+      id: Date.now(),
       title,
       date,
       image,

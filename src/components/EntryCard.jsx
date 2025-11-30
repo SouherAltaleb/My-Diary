@@ -1,4 +1,4 @@
-export default function EntryCard({ entry, onClick }) {
+export default function EntryCard({ entry, onClick, onDelete }) {
   const moodIcons = {
     happy: "😄",
     good: "😊",
@@ -11,25 +11,50 @@ export default function EntryCard({ entry, onClick }) {
     // card
     <div
       onClick={onClick}
-      className="
-        bg-(--color-green-light)
-        rounded-3xl overflow-hidden cursor-pointer
-        shadow-lg hover:shadow-2xl
-        transition-all duration-300
-        hover:-translate-y-1 hover:scale-[1.03]
-        border-2 border-(--color-green-middle)
+      className="  group relative cursor-pointer 
+    rounded-3xl overflow-hidden 
+    shadow-lg hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]
+    border-2 border-(--color-green-middle)
+    bg-(--color-green-light)
+    
+    transition-all duration-500 
+    hover:-translate-y-2 hover:scale-[1.03]
+    hover:rotate-[0.4deg]
       "
     >
+      {/* DELETE BUTTON  */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // verhindert, dass das Card-onClick ausgelöst wird
+          if (onDelete) onDelete(entry.id);
+        }}
+        className=" cursor-pointer
+   absolute top-3 right-3 z-30
+          bg-red-500 text-white w-10 h-10 rounded-full
+          flex items-center justify-center
+          shadow-md hover:bg-red-800
+          scale-50 
+          opacity-0                     /* Default: unsichtbar */
+          group-hover:opacity-100       /* Bei Hover sichtbar */
+           group-hover:scale-100
+           transition-all duration-500 ease-[cubic-bezier(.25,1.5,.5,1)]
+          
+  "
+        aria-label="Delete entry"
+      >
+        ✕
+      </button>
       {/* IMAGE */}
+      {/* absolute inset-0 
+    bg-gradient-to-t from-black/40 via-transparent to-transparent 
+    opacity-0 group-hover:opacity-100 
+    transition-all duration-700 */}
       <div className="h-56 w-full overflow-hidden">
         <img
           src={entry.image}
           alt={entry.title}
           className="
-            w-full h-full object-cover 
-            transition-transform duration-300 
-            hover:scale-110
-          "
+             w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75 group-hover:blur-[1px] "
         />
       </div>
 
