@@ -29,7 +29,8 @@ const MainLayout = () => {
 
       {/* Dynamischer Seiteninhalt */}
       <main className="grow px-4 sm:px-8 md:px-16 py-10">
-        <Outlet context={{ entries }} /> {/* Hier werden Home geladen */}
+        <Outlet context={{ entries, setEntries }} />
+        {/* Hier werden Home geladen */}
       </main>
 
       <Footer />
