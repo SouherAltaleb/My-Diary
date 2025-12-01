@@ -3,25 +3,28 @@ import { Outlet } from "react-router-dom";
 import EntryForm from "../components/EntryForm";
 import Footer from "./Footer.jsx";
 import Header from "./Header.jsx";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const MainLayout = () => {
   const [showModal, setShowModal] = useState(false);
 
-  // Daten aus localStorage holen
-  const [entries, setEntries] = useState(() => {
-    return JSON.parse(localStorage.getItem("entries")) || [];
-  });
+  //  LocalStorage wird NUR HIER ersetzt
+  const [entries, setEntries] = useLocalStorage("entries", []);
 
-  //   useEffect(() => {
-  //   const stored = JSON.parse(localStorage.getItem("entries")) || [];
-  //   setEntries(stored);
-  // }, []);
-
-  //   Speichern eines neuen Eintrags
+  //   neuen Eintrag speichern
   const handleAddEntry = (entry) => {
-    const updated = [entry, ...entries];
-    setEntries(updated);
-    localStorage.setItem("entries", JSON.stringify(updated));
+    // Prüfen, ob an diesem Datum bereits ein Eintrag existiert
+    const exists = entries.some((e) => e.date === entry.date);
+
+    if (exists) {
+      alert(
+        "You already wrote an entry for this day. Please come back tomorrow!"
+      );
+      return;
+    }
+
+    // ⬇️ Speicherung übernimmt der Hook automatisch
+    setEntries([entry, ...entries]);
     setShowModal(false);
   };
 
