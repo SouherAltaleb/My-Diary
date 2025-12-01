@@ -86,7 +86,9 @@ export default function EntryForm({ onSubmit }) {
           ))}
         </div>
       </div>
-      <button className="btn btn-primary mt-6 ">Save Entry</button>
+      <button className="btn btn-primary mt-6 hover:bg-(--color-green-light) ">
+        Save Entry
+      </button>
     </form>
   );
 }

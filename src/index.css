@@ -9,6 +9,7 @@
   --color-primary: #ff9784;
   --color-base-content: #fad4c9;
   --color-base-content: var(--color-green-dark);
+  --color-btn-hover: #d97f6e;
 }
 /* * {
   margin: auto;
