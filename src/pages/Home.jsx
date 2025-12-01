@@ -23,8 +23,8 @@ export default function Home() {
   };
 
   return (
-    <div className="mt-30">
-      <h1 className="text-3xl  mb-6">
+    <div className="mt-35">
+      <h1 className="text-2xl mb-2">
         Because Every Moment Deserves to Be Remembered.
       </h1>
 
