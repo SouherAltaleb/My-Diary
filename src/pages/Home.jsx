@@ -4,14 +4,19 @@ import EntryList from "../components/EntryList";
 import ViewEntryModal from "../components/modals/ViewEntryModal";
 
 export default function Home() {
+  // receives entries & setEntries vom MainLayout per <Outlet context={} />
   const { entries, setEntries } = useOutletContext();
+  // Welcher Eintrag wird gerade angeschaut?
   const [selectedEntry, setSelectedEntry] = useState(null);
+  // Steuert Sichtbarkeit der "View Entry" Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Wird aufgerufen, wenn eine Karte angeklickt wird
   const openEntry = (entry) => {
     setSelectedEntry(entry);
     setIsModalOpen(true);
   };
+  // Modal schließen
 
   const closeEntry = () => {
     setIsModalOpen(false);

@@ -6,9 +6,10 @@ import Header from "./Header.jsx";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const MainLayout = () => {
+  // Steuert, ob das Add-Entry Modal sichtbar ist
   const [showModal, setShowModal] = useState(false);
 
-  //  LocalStorage wird NUR HIER ersetzt
+  // Holt Einträge direkt aus localStorage beim ersten Rendern
   const [entries, setEntries] = useLocalStorage("entries", []);
 
   //   neuen Eintrag speichern
@@ -20,23 +21,23 @@ const MainLayout = () => {
       alert(
         "You already wrote an entry for this day. Please come back tomorrow!"
       );
-      return;
+      return; // Abruch – kein Eintrag speichern
     }
 
     //  Speicherung übernimmt der Hook automatisch
     setEntries([entry, ...entries]);
-    setShowModal(false);
+    setShowModal(false); // Modal schließen
   };
 
   return (
-    // Gesamtes Layout über die ganze Bildschirmhöhe
     <div className="min-h-screen flex flex-col">
+      {/* Kopfbereich mit "Add Entry" Button */}
       <Header onAddClick={() => setShowModal(true)} />
 
-      {/* Dynamischer Seiteninhalt */}
+      {/* Hauptinhalt – Seiten werden hier gerendert */}
       <main className="grow px-4 sm:px-8 md:px-16 py-10">
+        {/* Context über Outlet verfügbar: Home.jsx kann entries und setEntries empfangen */}
         <Outlet context={{ entries, setEntries }} />
-        {/* Hier werden Home geladen */}
       </main>
 
       <Footer />
@@ -54,7 +55,7 @@ const MainLayout = () => {
               Create New Entry
             </h2>
 
-            {/* Form */}
+            {/* Formular → sendet Daten an handleAddEntry */}
             <EntryForm onSubmit={handleAddEntry} />
 
             {/* Cancel Button */}

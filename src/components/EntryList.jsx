@@ -2,6 +2,7 @@
 import EntryCard from "./EntryCard";
 
 export default function EntryList({ entries, setEntries, openEntry }) {
+  // Wenn keine Einträge existieren → Hinweis anzeigen
   if (!entries || entries.length === 0) {
     return (
       <div>

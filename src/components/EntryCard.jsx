@@ -66,11 +66,8 @@ export default function EntryCard({ entry, onClick, onDelete }) {
           </g>
         </svg>
       </button>
+
       {/* IMAGE */}
-      {/* absolute inset-0 
-    bg-gradient-to-t from-black/40 via-transparent to-transparent 
-    opacity-0 group-hover:opacity-100 
-    transition-all duration-700 */}
       <div className="h-56 w-full overflow-hidden">
         <img
           src={entry.image}
