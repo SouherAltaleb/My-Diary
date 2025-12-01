@@ -76,7 +76,7 @@ export default function ViewEntryModal({ entry, open, onClose }) {
           <div
             className="
               absolute inset-0 
-              bg-gradient-to-t from-black/60 via-black/10 to-transparent
+              bg-linear-to-t from-black/60 via-black/10 to-transparent
             "
           />
         </div>

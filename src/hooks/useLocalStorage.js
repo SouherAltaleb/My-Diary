@@ -1,12 +1,32 @@
-// const defaultNotes = [
-//   {
-//     id: uuid.v4(),
-//     title: "My title",
-//     content:
-//       "Повседневная практика показывает, что реализация намеченных плановых заданий в значительной степени обуславливает создание модели развития. Идейные соображения высшего порядка, а также укрепление и развитие структуры играет важную роль в формировании существенных финансовых и административных условий.",
-//     mood: "😌",
-//     date: 1626535547228,
-//     image:
-//       "https://plus.unsplash.com/premium_photo-1669740216227-f6f4508ef61a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//   },
-// ];
+import { useState, useEffect } from "react";
+
+export default function useLocalStorage(key, initialValue) {
+  // 1) State wird initialisiert – aber wir prüfen zuerst, ob etwas im localStorage gespeichert ist.
+  const [value, setValue] = useState(() => {
+    try {
+      // Versuche gespeicherten Wert zu holen
+
+      const stored = localStorage.getItem(key);
+      // Wenn etwas existiert → benutze es
+      // Wenn nicht → initialValue (z.B. leeres Array)
+      return stored ? JSON.parse(stored) : initialValue;
+    } catch (err) {
+      console.error("LocalStorage Error:", err);
+      return initialValue;
+    }
+  });
+
+  // 2) Immer wenn "value" sich ändert, speichern wir es
+  //    automatisch im localStorage.
+  useEffect(() => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (err) {
+      console.error("LocalStorage Write Error:", err);
+    }
+  }, [key, value]);
+  // Abhängig von: wenn sich key ODER value ändert
+
+  // Rückgabe: genau wie useState – nur erweitert mit Storage
+  return [value, setValue];
+}
