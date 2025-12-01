@@ -1,7 +1,7 @@
 const AddEntryButton = ({ onClick }) => {
   return (
     <button
-      className="btn btn-primary text-(-green-dark) p-5 text-lg"
+      className="btn btn-primary text-(-green-dark) p-5 text-lg hover:bg-(--color-green-light)"
       onClick={onClick}
     >
       {/* pencil icon */}

@@ -23,7 +23,7 @@ const MainLayout = () => {
       return;
     }
 
-    // ⬇️ Speicherung übernimmt der Hook automatisch
+    //  Speicherung übernimmt der Hook automatisch
     setEntries([entry, ...entries]);
     setShowModal(false);
   };
