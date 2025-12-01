@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="mt-35">
-      <h1 className="text-2xl mb-2">
+      <h1 className="text-2xl mb-5">
         Because Every Moment Deserves to Be Remembered.
       </h1>
 
