@@ -17,14 +17,13 @@ export default function Home() {
     setIsModalOpen(true);
   };
   // Modal schließen
-
   const closeEntry = () => {
     setIsModalOpen(false);
     setSelectedEntry(null);
   };
 
   return (
-    <div className="mt-40">
+    <div className="mt-30">
       <h1 className="text-3xl  mb-6">
         Because Every Moment Deserves to Be Remembered.
       </h1>
