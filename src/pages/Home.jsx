@@ -20,7 +20,9 @@ export default function Home() {
 
   return (
     <div className="mt-40">
-      <h1 className="text-3xl font-bold mb-6">My Diary</h1>
+      <h1 className="text-3xl  mb-6">
+        Because Every Moment Deserves to Be Remembered.
+      </h1>
 
       <EntryList
         entries={entries}

@@ -122,3 +122,32 @@ p {
 .animate-slideUp {
   animation: slideUp 0.35s ease-out;
 }
+
+/* View EntryModal Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-zoomIn {
+  animation: zoomIn 0.45s cubic-bezier(0.22, 1.2, 0.32, 1) forwards;
+}

@@ -1,20 +1,23 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
 import EntryForm from "../components/EntryForm";
+import Footer from "./Footer.jsx";
+import Header from "./Header.jsx";
 
 const MainLayout = () => {
-  const [entries, setEntries] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  // Lade Daten beim Start
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("entries")) || [];
-    setEntries(stored);
-  }, []);
+  // Daten aus localStorage holen
+  const [entries, setEntries] = useState(() => {
+    return JSON.parse(localStorage.getItem("entries")) || [];
+  });
 
+  //   useEffect(() => {
+  //   const stored = JSON.parse(localStorage.getItem("entries")) || [];
+  //   setEntries(stored);
+  // }, []);
+
+  //   Speichern eines neuen Eintrags
   const handleAddEntry = (entry) => {
     const updated = [entry, ...entries];
     setEntries(updated);
@@ -45,18 +48,18 @@ const MainLayout = () => {
           >
             {/* Title */}
             <h2 className="text-3xl font-bold mb-6 text-(--color-primary)">
-              Add New Entry
+              Create New Entry
             </h2>
 
             {/* Form */}
             <EntryForm onSubmit={handleAddEntry} />
 
-            {/* Close Button */}
+            {/* Cancel Button */}
             <button
               className="btn w-full mt-6 bg-white text-(--color-green-dark) hover:bg-(--color-green-light)"
               onClick={() => setShowModal(false)}
             >
-              Close
+              Cancel
             </button>
           </div>
         </div>

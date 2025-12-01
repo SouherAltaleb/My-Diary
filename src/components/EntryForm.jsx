@@ -38,7 +38,7 @@ export default function EntryForm({ onSubmit }) {
   return (
     <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
       <input
-        className="input  border-(--color-green-middle) border-2 shadow-2xl "
+        className="input  border-(--color-green-middle) border-2 shadow-2xl w-full"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -46,20 +46,20 @@ export default function EntryForm({ onSubmit }) {
 
       <input
         type="date"
-        className="input border-(--color-green-middle) border-2 shadow-2xl "
+        className="input border-(--color-green-middle) border-2 shadow-2xl w-full "
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
 
       <input
-        className="input border-(--color-green-middle) border-2 shadow-2xl"
+        className="input border-(--color-green-middle) border-2 shadow-2xl w-full"
         placeholder="Image URL"
         value={image}
         onChange={(e) => setImage(e.target.value)}
       />
 
       <textarea
-        className="textarea border-(--color-green-middle) border-2 shadow-2xl"
+        className="textarea border-(--color-green-middle) border-2 shadow-2x w-full"
         placeholder="Write something..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
